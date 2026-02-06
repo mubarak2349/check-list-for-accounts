@@ -21,8 +21,8 @@
 
         /* Top Navigation Bar */
         .top-nav {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             padding: 0;
             position: sticky;
             top: 0;
@@ -31,7 +31,7 @@
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -42,60 +42,61 @@
         }
 
         .nav-brand {
-            font-size: 20px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: 0.5px;
         }
 
         .nav-brand::before {
             content: "📋";
-            font-size: 24px;
+            font-size: 26px;
         }
 
         .nav-links {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #495057;
+            color: #ecf0f1;
             padding: 10px 18px;
             border-radius: 8px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid transparent;
             white-space: nowrap;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .nav-links a:hover {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .nav-links a.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-color: #764ba2;
+            border-color: #ffd700;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 30px auto;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
@@ -132,7 +133,7 @@
         .header h1 {
             font-size: 32px;
             margin-bottom: 10px;
-            font-weight: 700;
+            font-weight: 800;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -144,10 +145,11 @@
         }
 
         .header .version {
-            font-size: 12px;
-            opacity: 0.8;
-            margin-top: 10px;
+            font-size: 13px;
+            opacity: 0.85;
+            margin-top: 12px;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .notification-banner {
@@ -170,7 +172,7 @@
             flex: 1;
             color: #856404;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .notification-banner button {
@@ -180,7 +182,7 @@
             padding: 10px 24px;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 14px;
             transition: all 0.3s;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -220,7 +222,7 @@
             padding: 12px 28px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 15px;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -281,7 +283,7 @@
 
         .stat-card .number {
             font-size: 36px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 8px;
             position: relative;
         }
@@ -348,7 +350,7 @@
             padding: 6px 14px;
             background: white;
             border-radius: 15px;
-            font-weight: 600;
+            font-weight: 700;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -362,6 +364,7 @@
             cursor: pointer;
             transition: all 0.3s;
             margin-left: 10px;
+            font-weight: 600;
         }
 
         .day-header .add-task-day-btn:hover {
@@ -428,6 +431,7 @@
             opacity: 0;
             transition: all 0.3s;
             margin-left: 10px;
+            font-weight: 600;
         }
 
         .task-item:hover .delete-task-btn {
@@ -440,7 +444,7 @@
 
         .task-item.custom-task label {
             color: #667eea;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .empty-day {
@@ -493,7 +497,7 @@
 
         .modal-header {
             font-size: 22px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 25px;
             color: #2c3e50;
             display: flex;
@@ -517,7 +521,7 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 700;
             color: #495057;
             font-size: 14px;
         }
@@ -557,7 +561,7 @@
             border: none;
             border-radius: 8px;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -583,7 +587,7 @@
         }
 
         .footer {
-            background: linear-gradient(to right, #2c3e50, #34495e);
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
             padding: 25px;
             text-align: center;
@@ -603,15 +607,17 @@
             color: #ecf0f1;
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 600;
         }
 
         .footer-links a:hover {
-            color: #667eea;
+            color: #ffd700;
         }
 
         .footer-copyright {
             opacity: 0.9;
             margin-top: 10px;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
@@ -685,11 +691,11 @@
         <div class="nav-container">
             <div class="nav-brand">Ababeel Finwire</div>
             <div class="nav-links">
-                <a href="https://aai-extract-tool-seaport-lines-air-coral.vercel.app/" title="Vendor Invoice Extract v2.9">Vendor Invoice Extract</a>
-                <a href="https://kyc-seaport-lines-india-pvt-ltd-ws9.vercel.app/" title="KYC Form v3.0">KYC Form</a>
-                <a href="https://seaport-air-div-caculation-tool-web.vercel.app/" title="Calculation Tools v3.1">Calculation Tools</a>
-                <a href="https://seaport-iata-new-39pd.vercel.app/" title="Seaport FN Airlines Payable - Dashboard v3.3">Airlines Dashboard</a>
-                <a href="https://check-list-for-accounts-rosn.vercel.app/#" class="active" title="Finance Monthly Checklist v3.4">Monthly Checklist</a>
+                <a href="https://aai-extract-tool-seaport-lines-air-coral.vercel.app/" target="_blank" title="Vendor Invoice Extract v2.9">Vendor Invoice Extract</a>
+                <a href="https://kyc-seaport-lines-india-pvt-ltd-ws9.vercel.app/" target="_blank" title="KYC Form v3.0">KYC Form</a>
+                <a href="https://seaport-air-div-caculation-tool-web.vercel.app/" target="_blank" title="Calculation Tools v3.1">Calculation Tools</a>
+                <a href="https://seaport-fn-airlines-payable-dashboard-v3-3.vercel.app/" target="_blank" title="Seaport FN Airlines Payable - Dashboard v3.3">Airlines Dashboard</a>
+                <a href="#" class="active" title="Finance Monthly Checklist v3.4">Monthly Checklist</a>
             </div>
         </div>
     </nav>
@@ -740,13 +746,13 @@
 
         <div class="footer">
             <div class="footer-links">
-                <a href="#" title="Vendor Invoice Extract v2.9">Vendor Invoice Extract v2.9</a>
+                <a href="https://aai-extract-tool-seaport-lines-air-coral.vercel.app/" target="_blank" title="Vendor Invoice Extract v2.9">Vendor Invoice Extract v2.9</a>
                 <span>||</span>
-                <a href="#" title="KYC Form v3.0">KYC Form v3.0</a>
+                <a href="https://kyc-seaport-lines-india-pvt-ltd-ws9.vercel.app/" target="_blank" title="KYC Form v3.0">KYC Form v3.0</a>
                 <span>||</span>
-                <a href="#" title="Calculation Tools v3.1">Calculation Tools v3.1</a>
+                <a href="https://seaport-air-div-caculation-tool-web.vercel.app/" target="_blank" title="Calculation Tools v3.1">Calculation Tools v3.1</a>
                 <span>||</span>
-                <a href="#" title="Seaport FN Airlines Payable - Dashboard v3.3">Seaport FN Airlines Payable - Dashboard v3.3</a>
+                <a href="https://seaport-fn-airlines-payable-dashboard-v3-3.vercel.app/" target="_blank" title="Seaport FN Airlines Payable - Dashboard v3.3">Seaport FN Airlines Payable - Dashboard v3.3</a>
             </div>
             <div class="footer-copyright">
                 Developed & Copyright © 2026 Ababeel Finwire | Monthly Checklist v3.4 | Last updated: <span id="lastUpdated"></span>
@@ -1243,4 +1249,3 @@
     </script>
 </body>
 </html>
-
