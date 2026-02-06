@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Corporate Monthly Checklist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #eef2f7;
+        margin: 0;
+        padding: 20px;
+    }
+    .app {
+        max-width: 900px;
+        margin: auto;
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .month {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #555;
+    }
+    .day {
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+    .day h3 {
+        margin: 0 0 6px;
+        color: #2c3e50;
+    }
+    .task {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin-bottom: 6px;
+    }
+    .task.done label {
+        text-decoration: line-through;
+        color: green;
+    }
+    label {
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+    <h1>📋 Corporate Monthly Checklist</h1>
+    <div class="month" id="monthLabel"></div>
+    <div id="checklist"></div>
+</div>
+
+<script>
+// ------------------ DATE & MONTH ------------------
+const today = new Date();
+const monthKey = today.getFullYear() + "_" + today.getMonth();
+document.getElementById("monthLabel").innerText =
+    today.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+// ------------------ TASKS 1–31 ------------------
+const tasksByDay = {
+    1: [
+        "Close all sales IRN invoices for last month",
+        "Prepare FN-1 payable report & clear Madurai EBMS"
+    ],
+    3: ["Close all TDS-related vendor invoices"],
+    4: ["Ensure all expenses are booked"],
+    5: [
+        "Pay rent",
+        "Pay EB charges (alternate month)",
+        "Cleaner salary",
+        "Internet charges",
+        "Courier charges",
+        "Tea & office expenses",
+        "C&F expenses"
+    ],
+    6: ["Pay TDS to XXXXX Lines"],
+    7: ["Check IATA airline invoices (1st cycle)"],
+    8: ["Enter IATA airline invoices (1st cycle)"],
+    9: ["Start MIS preparation"],
+    10: ["Pay all CHA"],
+    15: ["Prepare FN-2 payable report"],
+    14: ["FN-1 payment to airlines"],
+    16: ["FN-1 payment to airlines"],
+    18: ["Pay GST to XXXXX Lines"],
+    24: ["Check IATA airline invoices (2nd cycle)"],
+    25: ["Enter IATA airline invoices (2nd cycle)"],
+    29: ["FN-2 airline payment & close sales invoices"],
+    30: ["FN-2 airline payment & close sales invoices"],
+    31: ["FN-2 airline payment & close sales invoices"]
+};
+
+// ------------------ LOAD / SAVE ------------------
+const saved = JSON.parse(localStorage.getItem("corpChecklist_" + monthKey)) || {};
+const checklist = document.getElementById("checklist");
+
+for (let day = 1; day <= 31; day++) {
+    if (!tasksByDay[day]) continue;
+
+    const dayDiv = document.createElement("div");
+    dayDiv.className = "day";
+    dayDiv.innerHTML = `<h3>Day ${day}</h3>`;
+
+    tasksByDay[day].forEach((text, i) => {
+        const id = day + "_" + i;
+        const checked = saved[id] || false;
+
+        const taskDiv = document.createElement("div");
+        taskDiv.className = "task" + (checked ? " done" : "");
+
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = checked;
+
+        const label = document.createElement("label");
+        label.innerText = text;
+
+        cb.onchange = () => {
+            saved[id] = cb.checked;
+            localStorage.setItem("corpChecklist_" + monthKey, JSON.stringify(saved));
+            taskDiv.classList.toggle("done", cb.checked);
+        };
+
+        taskDiv.appendChild(cb);
+        taskDiv.appendChild(label);
+        dayDiv.appendChild(taskDiv);
+    });
+
+    checklist.appendChild(dayDiv);
+}
+
+// ------------------ DAILY NOTIFICATION ------------------
+if ("Notification" in window) {
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            const pendingToday = tasksByDay[today.getDate()];
+            if (pendingToday) {
+                new Notification("📌 Today’s Accounts Tasks", {
+                    body: pendingToday.join(", "),
+                });
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>
